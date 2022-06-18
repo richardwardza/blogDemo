@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "5a5ca26c-1abe-4e85-bd22-6656e8062b47",
+		"name": "bloggy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createBlog",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation createBlog($input: CreateBlogInput!) {\n  createBlog(input: $input) {\n    name\n    handle\n    posts {\n      title\n      content\n    }\n  }\n}",
+						"variables": "{\n  \"input\": {\n    \"name\": \"The Best of Times\",\n    \"handle\": \"BestTimesBlog\",\n    \"posts\": [\n      {\n        \"title\": \"The Beginning\",\n        \"content\": \"In the beginning....\"\n      }\n    ]\n  }\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dev/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation createPost($input: CreatePostInput!) {\n  createPost(input: $input) {\n    title\n    content\n  }\n}",
+						"variables": "{\n  \"input\": {\n    \"title\": \"The Middle Times\",\n    \"content\": \"After the start and before the end was the middle...\",\n    \"blogHandle\": \"BestTimesBlog\"\n  }\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dev/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieveBlog",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Blog($handle: String!) {\n  blog(handle: $handle) {\n    name\n    handle\n    postsRemaining\n    posts {\n      title\n      content\n    }\n  }\n}",
+						"variables": "{  \n  \"handle\": \"BestTimesBlog\"\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dev/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

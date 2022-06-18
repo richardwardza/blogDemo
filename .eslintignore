@@ -1,0 +1,6 @@
+# common
+dist/
+build/
+node_modules
+.env*
+jest

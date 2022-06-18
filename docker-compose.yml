@@ -1,0 +1,15 @@
+version: '3.9' # optional since v1.27.0
+services:
+  bloggy-db:
+    image: postgres:10.3
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: bloggy
+      POSTGRES_USER: bloggy
+      POSTGRES_PASSWORD: bloggy
+    volumes:
+      - postgres:/var/lib/postgresql/bloggy/data
+volumes:
+  postgres: ~
